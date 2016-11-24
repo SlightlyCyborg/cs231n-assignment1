@@ -97,8 +97,6 @@ class LinearClassifier(object):
     # TODO:                                                                   #
     # Implement this method. Store the predicted labels in y_pred.            #
     ###########################################################################
-    # Sort from lowest to high the scores of all the clases and put indices into array
-    # Then index that array so that you create an N x 1 matrix with the last column
     y_pred = np.argsort(X.dot(self.W), axis=1)[:,-1]
     print y_pred[:10]
     ###########################################################################

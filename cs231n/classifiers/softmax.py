@@ -91,6 +91,7 @@ def softmax_loss_vectorized(W, X, y, reg):
   n = X.shape[0]
   c = W.shape[1]
 
+  print "softmax++"
   #Probs Shape: N x C
   probs = np.exp(scores) / sums.T
   correct_inds = np.zeros(probs.shape)
@@ -106,12 +107,13 @@ def softmax_loss_vectorized(W, X, y, reg):
   #dW Shape: D x C
   dW += X.T.dot(probs)
 
-
-
-  
   #Normalize
   loss /= n
   dW   /= n
+
+  #Regularization
+  loss += reg * np.sum(W * W)
+  dW += 2 * reg * W
   
   #############################################################################
   #                          END OF YOUR CODE                                 #
